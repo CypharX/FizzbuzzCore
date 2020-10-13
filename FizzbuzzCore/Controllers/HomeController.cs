@@ -34,38 +34,29 @@ namespace FizzbuzzCore.Controllers
             var fbModel = new FizzbuzzModel();
             fbModel.FizzNum = Convert.ToInt32(fizzIn);
             fbModel.BuzzNum = Convert.ToInt32(buzzIn);
-            fbModel.Output = $"{fizzIn} was given for the Fizz-number and {buzzIn} for the Buzz-number";
-
+            var output = new StringBuilder();
+            for(var index = 1; index <= 100; index++)
+            {
+                if(index % fbModel.FizzNum == 0 && index % fbModel.BuzzNum == 0)
+                {
+                    output.AppendLine("FIZZBUZZ!");
+                }
+                else if(index % fbModel.FizzNum == 0)
+                {
+                    output.AppendLine("Fizz");
+                }
+                else if(index % fbModel.BuzzNum == 0)
+                {
+                    output.AppendLine("Buzz");
+                }
+                else
+                {
+                    output.AppendLine(index.ToString());
+                }
+            }
+            fbModel.Output = $"{output}";
             return RedirectToAction("Result", fbModel);
-        }
-        //public IActionResult Solve(string fizzIn, string buzzIn)
-        //{
-        //    var fizzNum = Convert.ToInt32(fizzIn);
-        //    var buzzNum = Convert.ToInt32(buzzIn);
-        //    var output = new StringBuilder();
-        //    for(var index = 1; index <= 100; index++)
-        //    {   
-        //        if(index % fizzNum == 0 && index % buzzNum == 0)
-        //        {
-        //            output.AppendLine("Fizzbuzz!!");
-        //        }
-        //        else if(index % fizzNum == 0)
-        //        {
-        //            output.AppendLine("Fizz");
-        //        }
-        //        else if(index % buzzNum == 0)
-        //        {
-        //            output.AppendLine("buzz");
-        //        }
-        //        else
-        //        {
-        //            output.AppendLine(index.ToString());
-        //        }
-        //    }
-
-        //    ViewData["Output"] = output;
-        //    return View();
-        //}
+        }       
         public IActionResult Result(FizzbuzzModel model)
         {
             return View(model);
