@@ -1,5 +1,5 @@
 # FizzbuzzCore
- Fizzbuzz in MVC
+ ## Fizzbuzz in MVC
 
 This site accepts 2 numbers then prints out all numbers between 1 and 100 replacing all multiples of the first number with fizz, all multiples of the second number with buzz and all multiples of both numbers with FIZZBUZZ!!. It uses the modulus operator in the following loop to determine multiples and the "AppendLine" method to add them to the string.
 ```
